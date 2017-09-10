@@ -1,3 +1,18 @@
-page-home {
+.aieyes-components-page {
+
+  ion-card {
+    margin-bottom: 2em;
+  }
+
+  ion-card-content {
+    background-color: #f4f5f8;
+  }
+
+  ion-card img {
+    width: auto;
+    height: 100%;
+    display: block;
+    margin: 20px auto;
+  }
 
 }

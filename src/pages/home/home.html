@@ -1,14 +1,26 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>aiEyes</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
+<ion-content padding class="aieyes-components-page">
+
+  <ion-card>
+    <ion-card-content>
+      <img src="assets/img/img-icon.png" />
+    </ion-card-content>
+
+    <ion-item>
+      <button ion-button item-end outline icon-start>
+        <ion-icon name="play"></ion-icon>
+        Speak
+      </button>
+    </ion-item>
+  </ion-card>
+
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+    <button ion-button block (click)="takePicture()">Take a Picture</button>
   </p>
+
 </ion-content>
