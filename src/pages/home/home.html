@@ -8,11 +8,11 @@
 
   <ion-card>
     <ion-card-content>
-      <img src="assets/img/img-icon.png" />
+      <img [src]="picture" />
     </ion-card-content>
 
     <ion-item>
-      <button ion-button item-end outline icon-start>
+      <button ion-button item-end outline icon-start *ngIf="isSpeak">
         <ion-icon name="play"></ion-icon>
         Speak
       </button>
