@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { CameraProvider } from './../../providers/camera/camera.provider';
-import { ComputerVisionService } from './../../providers/computer-vision/computer-vision.service';
+import { CognitiveService } from './../../providers/cognitive-services/cognitive-services.service';
 
 @Component({
   selector: 'page-home',
@@ -11,12 +11,11 @@ export class HomePage {
 
   picture: string = 'https://raw.githubusercontent.com/ionic-team/ionic-preview-app/master/src/assets/img/card-saopaolo.png';
   isSpeak: boolean = false;
-
-  debug: any;
+  imageDescription: string;
 
   constructor(
     private cameraProvider: CameraProvider,
-    private computerVisionService: ComputerVisionService,
+    private cognitiveService: CognitiveService,
     public navCtrl: NavController,
     public loadingCtrl: LoadingController
   ) {
@@ -26,6 +25,8 @@ export class HomePage {
   async takePicture(): Promise<any> {
     const loading = this.loadingCtrl.create();
 
+    let descriptionAnalyzedImage;
+
     loading.present();
 
     try {
@@ -33,13 +34,6 @@ export class HomePage {
         if (picture) {
           this.picture = picture;
           this.isSpeak = true;
-
-          /*this.computerVisionService.analyzeImage(this.picture).then(text => {
-            this.debug = text;
-
-            this.test1 = Object.keys(text);
-            this.test2 = text;
-          });*/
         }
         
         loading.dismiss();
@@ -47,17 +41,29 @@ export class HomePage {
         console.error(error);
       });
 
-      await this.computerVisionService.analyzeImage(this.picture).then(text => {
-        this.debug = text;
+      await this.cognitiveService.analyzeImage(this.picture).then(description => {
+        this.imageDescription = description;
+        // descriptionAnalyzedImage = description;
       }, error => {
         console.error(error);
       });
 
-      await this.computerVisionService.translateText(this.debug).subscribe(data => {
-        this.debug = data.text;
+      await this.cognitiveService.translateText(this.imageDescription).subscribe(translated => {
+        this.imageDescription = translated.text;
       });
+
+      await this.cognitiveService.playAudio(this.imageDescription);
     } 
     catch (error) {
+      console.error(error);
+    }
+  }
+
+  async speakAgain(): Promise<any> {
+    try {
+      await this.cognitiveService.playAudio(this.imageDescription);
+    }
+    catch(error) {
       console.error(error);
     }
   }

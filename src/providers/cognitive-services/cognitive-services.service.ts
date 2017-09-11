@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 import keys from '../../utils/keys';
 import configs from '../../utils/configs';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ComputerVisionService {
+export class CognitiveService {
 
   private fileTransfer: FileTransferObject;
 
   constructor(
     private http: Http, 
-    private transfer: FileTransfer
+    private transfer: FileTransfer,
+    private tts: TextToSpeech
   ) {
     this.fileTransfer = this.transfer.create();
   }
@@ -31,38 +33,33 @@ export class ComputerVisionService {
     };
 
     return this.fileTransfer.upload(imageFilePath, uriBase, options)
-    .then(data => data.response)
-    .then(x => {
-      // return this.translateText('I speak English');
-      // return 'I speak English';      
-      //return x['description'].captions[0].text;
-      // return JSON.stringify(x);
+      .then(data => data.response)
+      .then(res => {
+        const resParse = JSON.parse(res);
 
-      let y = JSON.parse(x);
-
-      // return this.translateText(y.description.captions[0].text).subscribe(translatedText => {
-      //   return translatedText.text;
-      // });
-
-      return y.description.captions[0].text;
-    }, error => {
-      console.error('ANALIZE IMAGE ERROR -> ' + JSON.stringify(error));
-    });
+        return resParse.description.captions[0].text;
+      }, error => {
+        console.error('ANALIZE IMAGE ERROR -> ' + JSON.stringify(error));
+      });
   }
 
-  translateText(text: string) {
+  translateText(text) {
     const uriBase = configs.TRANSLATE_URI_BASE;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     const data = {
-      text: text,
+      text,
       from: 'en',
       to: 'pt'
     };
 
     return this.http.post(uriBase, data, { headers })
       .map(res => res.json())
+  }
+
+  playAudio(text) {
+    return this.tts.speak(text);
   }
 
 }

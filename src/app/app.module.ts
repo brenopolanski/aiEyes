@@ -7,11 +7,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CameraProvider } from '../providers/camera/camera.provider';
-import { ComputerVisionService } from '../providers/computer-vision/computer-vision.service';
+import { CognitiveService } from '../providers/cognitive-services/cognitive-services.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ComputerVisionService } from '../providers/computer-vision/computer-vis
     File,
     Camera,
     CameraProvider,
-    ComputerVisionService
+    CognitiveService,
+    TextToSpeech
   ]
 })
 export class AppModule {}
