@@ -10,6 +10,9 @@
     <ion-card-content>
       <img [src]="picture" />
     </ion-card-content>
+    
+    <div class="card-title">São Paulo</div>
+    <div class="card-subtitle">41 Listing</div>
 
     <ion-item>
       <button ion-button item-end outline icon-start *ngIf="isSpeak">
@@ -22,5 +25,7 @@
   <p>
     <button ion-button block (click)="takePicture()">Take a Picture</button>
   </p>
+
+  <p>{{debug}}</p>
 
 </ion-content>

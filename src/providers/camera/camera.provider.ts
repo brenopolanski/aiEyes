@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Injectable()
 export class CameraProvider {
@@ -12,7 +12,7 @@ export class CameraProvider {
   }
 
   private getImage(pictureSourceType, quality = 50, saveToPhotoAlbum = false) {
-    const options = {
+    const options: CameraOptions = {
       quality,
       saveToPhotoAlbum,
       destinationType: this.camera.DestinationType.FILE_URI,
