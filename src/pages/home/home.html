@@ -10,10 +10,10 @@
     <img [src]="picture" />
   </ion-card>
 
-  <p>{{imageDescription}}</p>
+  <p class="image-description">{{imageDescription}}</p>
 
   <p>
-    <button ion-button outline large block *ngIf="isSpeak" (click)="speakAgain()">Speak Again</button>
+    <button ion-button large block color="light" *ngIf="isSpeak" (click)="speakAgain()">Speak Again</button>
   </p>
 
   <p>

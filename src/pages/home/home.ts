@@ -9,8 +9,8 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 })
 export class HomePage {
 
-  picture: string = 'https://raw.githubusercontent.com/ionic-team/ionic-preview-app/master/src/assets/img/card-saopaolo.png';
   isSpeak: boolean = false;
+  picture: string;
   imageDescription: string;
 
   constructor(
@@ -34,7 +34,6 @@ export class HomePage {
       await this.cameraProvider.getPictureFromCamera().then(picture => {
         if (picture) {
           this.picture = picture;
-          this.isSpeak = true;
         }
 
         this.cognitiveService.playAudio('Analizando a imagem');
@@ -51,6 +50,7 @@ export class HomePage {
       await this.cognitiveService.translateText(descriptionAnalyzedImage).subscribe(translated => {
         this.imageDescription = translated.text;
         this.cognitiveService.playAudio(translated.text);
+        this.isSpeak = true;
       });
 
       loading.dismiss();
