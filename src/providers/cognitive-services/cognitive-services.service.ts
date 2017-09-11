@@ -58,8 +58,13 @@ export class CognitiveService {
       .map(res => res.json())
   }
 
-  playAudio(text) {
-    return this.tts.speak(text);
+  playAudio(text, locale = 'pt-BR') {
+    const options = {
+      text,
+      locale
+    };
+
+    return this.tts.speak(options);
   }
 
 }

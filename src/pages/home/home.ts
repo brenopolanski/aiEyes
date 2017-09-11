@@ -28,6 +28,7 @@ export class HomePage {
     let descriptionAnalyzedImage;
 
     loading.present();
+    this.imageDescription = '';
 
     try {
       await this.cameraProvider.getPictureFromCamera().then(picture => {
@@ -35,24 +36,24 @@ export class HomePage {
           this.picture = picture;
           this.isSpeak = true;
         }
-        
-        loading.dismiss();
+
+        this.cognitiveService.playAudio('Analizando a imagem');
       }, error => {
         console.error(error);
       });
 
       await this.cognitiveService.analyzeImage(this.picture).then(description => {
-        this.imageDescription = description;
-        // descriptionAnalyzedImage = description;
+        descriptionAnalyzedImage = description;
       }, error => {
         console.error(error);
       });
 
-      await this.cognitiveService.translateText(this.imageDescription).subscribe(translated => {
+      await this.cognitiveService.translateText(descriptionAnalyzedImage).subscribe(translated => {
         this.imageDescription = translated.text;
+        this.cognitiveService.playAudio(translated.text);
       });
 
-      await this.cognitiveService.playAudio(this.imageDescription);
+      loading.dismiss();
     } 
     catch (error) {
       console.error(error);
