@@ -1,1 +1,13 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+  <ion-content padding>
+    <h4>Settings</h4>
+
+    <ion-item>
+      <ion-label>Enabled</ion-label>
+      <ion-toggle [(ngModel)]="toggleValue"></ion-toggle>
+    </ion-item>
+    <p *ngIf="toggleValue">The toggle is enabled!</p>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>
