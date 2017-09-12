@@ -8,6 +8,7 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { Vibration } from '@ionic-native/vibration';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -39,7 +40,8 @@ import { CognitiveService } from '../providers/cognitive-services/cognitive-serv
     Camera,
     CameraProvider,
     CognitiveService,
-    TextToSpeech
+    TextToSpeech,
+    Vibration
   ]
 })
 export class AppModule {}

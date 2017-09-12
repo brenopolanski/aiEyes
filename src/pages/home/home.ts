@@ -8,10 +8,10 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  isSpeak: boolean = false;
+  
   picture: string;
   imageDescription: string;
+  isSpeak: boolean;
 
   constructor(
     private cameraProvider: CameraProvider,
@@ -28,6 +28,8 @@ export class HomePage {
     let descriptionAnalyzedImage;
 
     loading.present();
+    
+    this.isSpeak = false;
     this.imageDescription = '';
 
     try {
@@ -49,6 +51,7 @@ export class HomePage {
 
       await this.cognitiveService.translateText(descriptionAnalyzedImage).subscribe(translated => {
         this.imageDescription = translated.text;
+        this.cognitiveService.vibrate();
         this.cognitiveService.playAudio(translated.text);
         this.isSpeak = true;
       });
