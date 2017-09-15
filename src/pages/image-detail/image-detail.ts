@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { CameraProvider } from './../../providers/camera/camera.provider';
+import { NativeActionsProvider } from './../../providers/native-actions/native-actions';
 import { CognitiveService } from './../../providers/cognitive-services/cognitive-services.service';
 
 @IonicPage()
@@ -10,12 +11,13 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 })
 export class ImageDetailPage {
 
-  picture: string;
+  picture: any = false;
   imageDescription: string;
   isSpeak: boolean;
 
   constructor(
     private cameraProvider: CameraProvider,
+    private nativeActionsProvider: NativeActionsProvider,
     private cognitiveService: CognitiveService,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -43,7 +45,7 @@ export class ImageDetailPage {
           this.picture = picture;
         }
 
-        this.cognitiveService.playAudio('Analizando a imagem');
+        this.nativeActionsProvider.playAudio('Analizando a imagem');
       }, error => {
         console.error(error);
       });
@@ -56,8 +58,8 @@ export class ImageDetailPage {
 
       await this.cognitiveService.translateText(descriptionAnalyzedImage).subscribe(translated => {
         this.imageDescription = translated.text;
-        this.cognitiveService.vibrate();
-        this.cognitiveService.playAudio(translated.text);
+        this.nativeActionsProvider.vibrate();
+        this.nativeActionsProvider.playAudio(translated.text);
         this.isSpeak = true;
       });
 
@@ -70,7 +72,7 @@ export class ImageDetailPage {
 
   async speakAgain(): Promise<any> {
     try {
-      await this.cognitiveService.playAudio(this.imageDescription);
+      await this.nativeActionsProvider.playAudio(this.imageDescription);
     }
     catch(error) {
       console.error(error);

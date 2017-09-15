@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <img [src]="picture">
+  <img [src]="picture" *ngIf="picture" >
   <div class="container-description" (click)="takePicture()">
     <p class="image-description">{{imageDescription}}</p>
   </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { CognitiveService } from './../../providers/cognitive-services/cognitive-services.service';
+import { NativeActionsProvider } from './../../providers/native-actions/native-actions';
 
 @Component({
   selector: 'page-home',
@@ -9,7 +9,7 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 export class HomePage {
 
   constructor(
-    private cognitiveService: CognitiveService,
+    private nativeActionsProvider: NativeActionsProvider,
     public navCtrl: NavController
   ) {
 
@@ -20,7 +20,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.cognitiveService.playAudio('Toque na tela e tire uma foto');
+    this.nativeActionsProvider.playAudio('Toque na tela e tire uma foto');
   }
 
 }

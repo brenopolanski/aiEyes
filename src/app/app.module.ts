@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CameraProvider } from '../providers/camera/camera.provider';
 import { CognitiveService } from '../providers/cognitive-services/cognitive-services.service';
+import { NativeActionsProvider } from '../providers/native-actions/native-actions';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CognitiveService } from '../providers/cognitive-services/cognitive-serv
     CameraProvider,
     CognitiveService,
     TextToSpeech,
-    Vibration
+    Vibration,
+    NativeActionsProvider
   ]
 })
 export class AppModule {}

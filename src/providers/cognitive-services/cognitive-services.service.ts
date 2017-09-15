@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { TextToSpeech } from '@ionic-native/text-to-speech';
-import { Vibration } from '@ionic-native/vibration';
 import keys from '../../utils/keys';
 import configs from '../../utils/configs';
 import 'rxjs/add/operator/map';
@@ -13,10 +11,8 @@ export class CognitiveService {
   private fileTransfer: FileTransferObject;
 
   constructor(
-    private http: Http, 
-    private transfer: FileTransfer,
-    private tts: TextToSpeech,
-    private vibration: Vibration
+    private http: Http,
+    private transfer: FileTransfer
   ) {
     this.fileTransfer = this.transfer.create();
   }
@@ -58,19 +54,6 @@ export class CognitiveService {
 
     return this.http.post(uriBase, data, { headers })
       .map(res => res.json())
-  }
-
-  playAudio(text, locale = 'pt-BR') {
-    const options = {
-      text,
-      locale
-    };
-
-    return this.tts.speak(options);
-  }
-
-  vibrate(time = 1000) {
-    this.vibration.vibrate(time);
   }
 
 }
