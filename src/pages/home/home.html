@@ -9,20 +9,6 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="aieyes-components-page">
-
-  <ion-card>
-    <img [src]="picture" />
-  </ion-card>
-
-  <p class="image-description">{{imageDescription}}</p>
-
-  <p>
-    <button ion-button large block color="light" *ngIf="isSpeak" (click)="speakAgain()">Speak Again</button>
-  </p>
-
-  <p>
-    <button ion-button large block (click)="takePicture()">Take a Picture</button>
-  </p>
-
+<ion-content>
+  <button class="btn-take-picture" color="dark" ion-button large block (click)="takePicture()">Take <br> a <br> Picture</button>
 </ion-content>

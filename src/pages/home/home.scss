@@ -1,8 +1,18 @@
-.aieyes-components-page {
+page-home {
 
-  .image-description {
-    color: #fff;
-    font-style: italic;
+  .btn-take-picture {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    height: 100%;
+    border-radius: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 6rem;
+    line-height: 1.5;
   }
 
 }

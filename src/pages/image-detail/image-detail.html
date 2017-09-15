@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Image Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img [src]="picture">
+  <div class="container-description" (click)="takePicture()">
+    <p class="image-description">{{imageDescription}}</p>
+  </div>
+  <button class="btn-speak-again" color="dark" ion-button large block *ngIf="isSpeak" (click)="speakAgain()">Speak Again</button>
+</ion-content>
