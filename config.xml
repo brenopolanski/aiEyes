@@ -80,6 +80,7 @@
     <allow-navigation href="http://192.168.15.4:8100" />
     <allow-navigation href="*" />
     <allow-navigation href="file://*/*" />
+    <allow-navigation href="http://192.168.15.9:8101" />
     <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />

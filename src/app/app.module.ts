@@ -12,6 +12,8 @@ import { Vibration } from '@ionic-native/vibration';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SettingsPage } from '../pages/settings/settings';
+import { AboutPage } from '../pages/about/about';
 import { CameraProvider } from '../providers/camera/camera.provider';
 import { CognitiveService } from '../providers/cognitive-services/cognitive-services.service';
 import { NativeActionsProvider } from '../providers/native-actions/native-actions';
@@ -19,7 +21,9 @@ import { NativeActionsProvider } from '../providers/native-actions/native-action
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SettingsPage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { NativeActionsProvider } from '../providers/native-actions/native-action
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SettingsPage,
+    AboutPage
   ],
   providers: [
     StatusBar,

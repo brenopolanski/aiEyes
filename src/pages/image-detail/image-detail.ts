@@ -11,9 +11,9 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 })
 export class ImageDetailPage {
 
-  picture: any = false;
-  imageDescription: string;
-  isSpeak: boolean;
+  picture: boolean|string = false;
+  imageDescription: string = '';
+  isSpeak: boolean = false;
 
   constructor(
     private cameraProvider: CameraProvider,

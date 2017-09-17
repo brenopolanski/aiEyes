@@ -16,7 +16,7 @@ export class HomePage {
   }
 
   takePicture() {
-    this.navCtrl.push('ImageDetailPage');
+    this.navCtrl.setRoot('ImageDetailPage');
   }
 
   ionViewDidLoad() {
