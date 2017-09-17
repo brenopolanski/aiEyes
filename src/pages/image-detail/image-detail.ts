@@ -30,7 +30,9 @@ export class ImageDetailPage {
   }
 
   async takePicture(): Promise<any> {
-    const loading = this.loadingCtrl.create();
+    const loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    });
 
     let descriptionAnalyzedImage;
 
