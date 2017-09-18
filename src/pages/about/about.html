@@ -3,10 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>About</ion-title>
+    <ion-title>
+      {{ 'ABOUT' | translate }}
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <p>{{getPreferredLanguage}}</p>
+  <p>{{getLocaleName}}</p>
 </ion-content>

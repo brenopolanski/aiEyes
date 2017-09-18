@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { Globalization } from '@ionic-native/globalization';
+import { TranslateService } from '@ngx-translate/core';
 
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
@@ -22,7 +24,9 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public screenOrientation: ScreenOrientation
+    public screenOrientation: ScreenOrientation,
+    private globalization: Globalization,
+    public translate: TranslateService
   ) {
     this.initializeApp();
 
@@ -34,12 +38,27 @@ export class MyApp {
   }
 
   initializeApp() {
+    // this.translate.setDefaultLang('en');
+
+    // this.globalization.getPreferredLanguage()
+    //   .then(res => {
+    //     this.translate.setDefaultLang(res.value);
+    //   })
+    //   .catch(e => console.log(e));
+
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
+      this.globalization.getPreferredLanguage()
+        .then(res => {
+          this.translate.setDefaultLang(res.value);
+        })
+        .catch(e => console.log(e));
+
     });
   }
 

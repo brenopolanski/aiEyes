@@ -87,6 +87,7 @@
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-file" spec="^4.3.3" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.6.3" />
+    <plugin name="cordova-plugin-globalization" spec="^1.0.7" />
     <plugin name="cordova-plugin-screen-orientation" spec="^2.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.2" />
