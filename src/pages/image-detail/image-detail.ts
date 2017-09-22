@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 import { CameraProvider } from './../../providers/camera/camera.provider';
 import { NativeActionsProvider } from './../../providers/native-actions/native-actions';
 import { CognitiveService } from './../../providers/cognitive-services/cognitive-services.service';
-import { NgxTranslateService } from './../../providers/ngx-translate-service/ngx-translate-service';
 
 @IonicPage()
 @Component({
@@ -21,15 +21,11 @@ export class ImageDetailPage {
     private cameraProvider: CameraProvider,
     private nativeActionsProvider: NativeActionsProvider,
     private cognitiveService: CognitiveService,
-    private ngxTranslateService: NgxTranslateService,
+    private translateService: TranslateService,
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController
   ) {
-  }
-
-  ionViewDidLoad() {
-    return this.takePicture();
   }
 
   ionViewCanEnter() {
@@ -39,18 +35,19 @@ export class ImageDetailPage {
     ];
 
     this.translateTexts.forEach(el => {
-      this.ngxTranslateService.translateText(el.title)
-        .then(data => data.value)
-        .then(value => {
-          el.text = value;
+      this.translateService.get(el.title.toUpperCase()).subscribe((res: string) => {
+        el.text = res;
       });
     });
   }
 
+  ionViewDidLoad() {
+    return this.takePicture();
+  }
+
   async takePicture(): Promise<any> {
     const loading = this.loadingCtrl.create({
-      content: 'Loading...'
-      // content: `${this.translateTexts[0].text} ...`
+      content: `${this.translateTexts[0].text} ...`
     });
 
     let descriptionAnalyzedImage;
@@ -66,7 +63,7 @@ export class ImageDetailPage {
           this.picture = picture;
         }
 
-        this.nativeActionsProvider.playAudio('Analizando a imagem');
+        this.nativeActionsProvider.playAudio(this.translateTexts[1].text);
       }, error => {
         console.error(error);
       });
