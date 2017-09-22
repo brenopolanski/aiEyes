@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { Globalization } from '@ionic-native/globalization';
 import { TranslateService } from '@ngx-translate/core';
-import { NgxTranslateService } from './../providers/ngx-translate-service/ngx-translate-service';
 
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
@@ -19,7 +18,6 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  preferredLanguage: string = 'en';
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -28,8 +26,7 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public screenOrientation: ScreenOrientation,
     public globalization: Globalization,
-    public translateService: TranslateService,
-    public ngxTranslateService: NgxTranslateService
+    public translateService: TranslateService
   ) {
     this.initializeApp();
 
@@ -38,32 +35,32 @@ export class MyApp {
       { title: 'Settings', component: SettingsPage },
       { title: 'About', component: AboutPage }
     ];
-
-    this.pages.forEach(el => {
-      this.ngxTranslateService.translateText(el.title)
-        .then(data => data.value)
-        .then(value => {
-          el.title = value;
-      });
-    });
   }
 
   initializeApp() {
+    // this language will be used as a fallback when a
+    // translation isn't found in the current language
+    this.translateService.setDefaultLang('en');
+
+    // the lang to use, if the lang isn't available,
+    // it will use the current loader to get them
+    this.globalization.getPreferredLanguage()
+      .then(res => this.translateService.use(res.value))
+      .catch(error => console.log(error));
+
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-      this.translateService.setDefaultLang('en');
 
-      this.globalization.getPreferredLanguage()
-        .then(res => {
-          this.preferredLanguage = res.value;
-          this.translateService.use(res.value);
-        })
-        .catch(error => console.log(error));
-
+      // translate pages name
+      this.pages.forEach(el => {
+        this.translateService.get(el.title.toUpperCase()).subscribe((res: string) => {
+          el.title = res;
+        });
+      });
     });
   }
 

@@ -49,8 +49,8 @@ export class ImageDetailPage {
 
   async takePicture(): Promise<any> {
     const loading = this.loadingCtrl.create({
-      // content: 'Loading...'
-      content: `${this.translateTexts[0].text} ...`
+      content: 'Loading...'
+      // content: `${this.translateTexts[0].text} ...`
     });
 
     let descriptionAnalyzedImage;
