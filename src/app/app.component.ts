@@ -26,7 +26,7 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public screenOrientation: ScreenOrientation,
     private globalization: Globalization,
-    public translate: TranslateService
+    public translateService: TranslateService
   ) {
     this.initializeApp();
 
@@ -35,17 +35,15 @@ export class MyApp {
       { title: 'Settings', component: SettingsPage },
       { title: 'About', component: AboutPage }
     ];
+
+    this.pages.forEach(el => {
+      this.translateText(el.title).then(data => data.value).then(value => {
+        el.title = value;
+      });
+    });
   }
 
   initializeApp() {
-    // this.translate.setDefaultLang('en');
-
-    // this.globalization.getPreferredLanguage()
-    //   .then(res => {
-    //     this.translate.setDefaultLang(res.value);
-    //   })
-    //   .catch(e => console.log(e));
-
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -54,12 +52,15 @@ export class MyApp {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
       this.globalization.getPreferredLanguage()
-        .then(res => {
-          this.translate.setDefaultLang(res.value);
-        })
-        .catch(e => console.log(e));
-
+        .then(res => this.translateService.setDefaultLang(res.value))
+        .catch(() => this.translateService.setDefaultLang('en'));
     });
+  }
+
+  async translateText(text: string, time = 1000): Promise<any> {
+    const delay = () => new Promise(res => setTimeout(() => res(), time));
+    await delay();
+    return this.translateService.get(text.toUpperCase());
   }
 
   openPage(page) {

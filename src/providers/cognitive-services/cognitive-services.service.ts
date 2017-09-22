@@ -53,7 +53,7 @@ export class CognitiveService {
     };
 
     return this.http.post(uriBase, data, { headers })
-      .map(res => res.json())
+      .map(res => res.json());
   }
 
 }

@@ -1,5 +1,8 @@
 {
+  "MENU": "Menu",
+  "HOME": "Home",
+  "SETTINGS": "Settings",
+  "ABOUT": "About",
   "LOADING": "Loading",
-  "IMAGE_DETAIL": "Image Detail",
-  "ABOUT": "About"
+  "IMAGE_DETAIL": "Image Detail"
 }
