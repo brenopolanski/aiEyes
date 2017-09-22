@@ -6,19 +6,19 @@ import { Vibration } from '@ionic-native/vibration';
 @Injectable()
 export class NativeActionsProvider {
 
-  preferredLanguage: string = 'en';
+  // preferredLanguage: string = 'en';
 
   constructor(
     private globalization: Globalization,
     private tts: TextToSpeech,
     private vibration: Vibration
   ) {
-    this.globalization.getPreferredLanguage()
+/*     this.globalization.getPreferredLanguage()
       .then(res => this.preferredLanguage = res.value)
-      .catch(error => console.log(error));
+      .catch(error => console.log(error)); */
   }
 
-  playAudio(text, locale = this.preferredLanguage) {
+  playAudio(text, locale = 'pt-BR') {
     const options = {
       text,
       locale

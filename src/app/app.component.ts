@@ -19,6 +19,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
+  preferredLanguage: string = 'en';
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -57,7 +58,10 @@ export class MyApp {
       this.translateService.setDefaultLang('en');
 
       this.globalization.getPreferredLanguage()
-        .then(res => this.translateService.use(res.value))
+        .then(res => {
+          this.preferredLanguage = res.value;
+          this.translateService.use(res.value);
+        })
         .catch(error => console.log(error));
 
     });

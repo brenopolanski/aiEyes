@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { CameraProvider } from './../../providers/camera/camera.provider';
 import { NativeActionsProvider } from './../../providers/native-actions/native-actions';
 import { CognitiveService } from './../../providers/cognitive-services/cognitive-services.service';
+import { NgxTranslateService } from './../../providers/ngx-translate-service/ngx-translate-service';
 
 @IonicPage()
 @Component({
@@ -11,6 +12,7 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 })
 export class ImageDetailPage {
 
+  translateTexts: Array<{title: string, text: string}>;
   picture: boolean|string = false;
   imageDescription: string = '';
   isSpeak: boolean = false;
@@ -19,6 +21,7 @@ export class ImageDetailPage {
     private cameraProvider: CameraProvider,
     private nativeActionsProvider: NativeActionsProvider,
     private cognitiveService: CognitiveService,
+    private ngxTranslateService: NgxTranslateService,
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController
@@ -29,9 +32,25 @@ export class ImageDetailPage {
     return this.takePicture();
   }
 
+  ionViewCanEnter() {
+    this.translateTexts = [
+      { title: 'LOADING', text: '' },
+      { title: 'ANALYZING_IMAGE', text: '' }
+    ];
+
+    this.translateTexts.forEach(el => {
+      this.ngxTranslateService.translateText(el.title)
+        .then(data => data.value)
+        .then(value => {
+          el.text = value;
+      });
+    });
+  }
+
   async takePicture(): Promise<any> {
     const loading = this.loadingCtrl.create({
-      content: 'Loading...'
+      // content: 'Loading...'
+      content: `${this.translateTexts[0].text} ...`
     });
 
     let descriptionAnalyzedImage;

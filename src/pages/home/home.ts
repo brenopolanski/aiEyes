@@ -15,12 +15,12 @@ export class HomePage {
 
   }
 
-  takePicture() {
-    this.navCtrl.setRoot('ImageDetailPage');
-  }
-
   ionViewDidLoad() {
     this.nativeActionsProvider.playAudio('Toque na tela e tire uma foto');
+  }
+
+  takePicture() {
+    this.navCtrl.setRoot('ImageDetailPage');
   }
 
 }
