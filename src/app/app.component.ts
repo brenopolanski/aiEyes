@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { Globalization } from '@ionic-native/globalization';
 import { TranslateService } from '@ngx-translate/core';
+import { NgxTranslateService } from './../providers/ngx-translate-service/ngx-translate-service';
 
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
@@ -25,8 +26,9 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public screenOrientation: ScreenOrientation,
-    private globalization: Globalization,
-    public translateService: TranslateService
+    public globalization: Globalization,
+    public translateService: TranslateService,
+    public ngxTranslateService: NgxTranslateService
   ) {
     this.initializeApp();
 
@@ -37,8 +39,10 @@ export class MyApp {
     ];
 
     this.pages.forEach(el => {
-      this.translateText(el.title).then(data => data.value).then(value => {
-        el.title = value;
+      this.ngxTranslateService.translateText(el.title)
+        .then(data => data.value)
+        .then(value => {
+          el.title = value;
       });
     });
   }
@@ -50,17 +54,13 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+      this.translateService.setDefaultLang('en');
 
       this.globalization.getPreferredLanguage()
-        .then(res => this.translateService.setDefaultLang(res.value))
-        .catch(() => this.translateService.setDefaultLang('en'));
-    });
-  }
+        .then(res => this.translateService.use(res.value))
+        .catch(error => console.log(error));
 
-  async translateText(text: string, time = 1000): Promise<any> {
-    const delay = () => new Promise(res => setTimeout(() => res(), time));
-    await delay();
-    return this.translateService.get(text.toUpperCase());
+    });
   }
 
   openPage(page) {
