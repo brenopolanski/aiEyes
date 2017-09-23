@@ -37,7 +37,7 @@ export class CognitiveService {
 
         return resParse.description.captions[0].text;
       }, error => {
-        console.error('ANALIZE IMAGE ERROR -> ' + JSON.stringify(error));
+        console.error(`ANALIZE IMAGE ERROR -> ${JSON.stringify(error)}`);
       });
   }
 

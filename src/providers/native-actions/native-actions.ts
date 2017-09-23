@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { Vibration } from '@ionic-native/vibration';
 
@@ -6,13 +7,14 @@ import { Vibration } from '@ionic-native/vibration';
 export class NativeActionsProvider {
 
   constructor(
+    private translateService: TranslateService,
     private tts: TextToSpeech,
     private vibration: Vibration
   ) {
 
   }
 
-  playAudio(text, locale = 'pt-BR') {
+  playAudio(text, locale = this.translateService.currentLang) {
     const options = {
       text,
       locale

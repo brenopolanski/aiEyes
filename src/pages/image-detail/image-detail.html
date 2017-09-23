@@ -14,5 +14,5 @@
   <div class="container-description" (click)="takePicture()">
     <p class="image-description">{{imageDescription}}</p>
   </div>
-  <button class="btn-speak-again" color="dark" ion-button large block *ngIf="isSpeak" (click)="speakAgain()">Speak Again</button>
+  <button class="btn-speak-again" color="dark" ion-button large block *ngIf="isSpeak" (click)="speakAgain()">{{ 'SPEAK_AGAIN' | translate }}</button>
 </ion-content>

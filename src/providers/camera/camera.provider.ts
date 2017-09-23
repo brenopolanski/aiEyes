@@ -22,7 +22,7 @@ export class CameraProvider {
     return this.camera.getPicture(options).then(imageData => {
       return imageData;
     }, error => {
-      console.error('CAMERA ERROR -> ' + JSON.stringify(error));
+      console.error(`CAMERA ERROR -> ${JSON.stringify(error)}`);
     });
   }
 
