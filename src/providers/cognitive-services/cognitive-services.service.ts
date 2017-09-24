@@ -41,7 +41,7 @@ export class CognitiveService {
       });
   }
 
-  translateText(text) {
+  translateText(text, translateTo = 'en') {
     const uriBase = configs.TRANSLATE_URI_BASE;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -49,7 +49,7 @@ export class CognitiveService {
     const data = {
       text,
       from: 'en',
-      to: 'pt'
+      to: translateTo
     };
 
     return this.http.post(uriBase, data, { headers })

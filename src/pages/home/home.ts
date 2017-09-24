@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { NavController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { NativeActionsProvider } from './../../providers/native-actions/native-actions';
@@ -9,9 +10,11 @@ import { NativeActionsProvider } from './../../providers/native-actions/native-a
 })
 export class HomePage {
 
+  voiceLanguage: string = 'en-US';
   translateTexts: Array<{title: string, text: string}>;
 
   constructor(
+    private nativeStorage: NativeStorage,
     private translateService: TranslateService,
     private nativeActionsProvider: NativeActionsProvider,
     public navCtrl: NavController
@@ -20,8 +23,11 @@ export class HomePage {
   }
 
   async ionViewCanEnter(): Promise<any> {
+    this.nativeStorage.getItem('voiceLanguage').then(data => this.voiceLanguage = data);
+
     const delay = time => new Promise(res => setTimeout(() => res(), time));
     await delay(1000);
+
 
     this.translateTexts = [
       { title: 'TOUCH_SCREEN_TAKE_PHOTO', text: '' }
@@ -35,7 +41,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.nativeActionsProvider.playAudio(this.translateTexts[0].text);
+    this.nativeActionsProvider.playAudio(this.translateTexts[0].text, this.voiceLanguage);
   }
 
   takePicture() {

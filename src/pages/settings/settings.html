@@ -9,6 +9,46 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+	<ion-list no-border>
+		<ion-list-header>Mobile Settings</ion-list-header>
 
+		<ion-item>
+			<ion-label>Mute</ion-label>
+			<ion-toggle [(ngModel)]="isMute" (ngModelChange)="updateItem('isMute', isMute)"></ion-toggle>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>App Language</ion-label>
+			<ion-select [(ngModel)]="appLanguage" (ngModelChange)="updateAppLanguage(appLanguage)" submitText="Accept" cancelText="Cancel">
+				<ion-option value="en">English</ion-option>
+				<ion-option value="pt-BR">Portuguese (pt-BR)</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>Voice Language</ion-label>
+			<ion-select [(ngModel)]="voiceLanguage" (ngModelChange)="updateItem('voiceLanguage', voiceLanguage)" submitText="Accept" cancelText="Cancel">
+				<ion-option value="en-US">English</ion-option>
+				<ion-option value="pt-BR">Portuguese (pt-BR)</ion-option>
+			</ion-select>
+		</ion-item>
+	</ion-list>
+
+	<ion-list no-border>
+		<ion-list-header>Translate</ion-list-header>
+
+		<ion-item>
+			<ion-label>From</ion-label>
+			<ion-note item-end>English</ion-note>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>To</ion-label>
+			<ion-select [(ngModel)]="translateTo" (ngModelChange)="updateItem('translateTo', translateTo)" submitText="Accept" cancelText="Cancel">
+				<ion-option value="en">English</ion-option>
+				<ion-option value="pt">Portuguese (pt-BR)</ion-option>
+			</ion-select>
+		</ion-item>
+	</ion-list>
 </ion-content>

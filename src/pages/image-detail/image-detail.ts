@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { CameraProvider } from './../../providers/camera/camera.provider';
@@ -12,12 +13,15 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 })
 export class ImageDetailPage {
 
+  voiceLanguage: string = 'en-US';
+  translateTo: string = 'en';
   translateTexts: Array<{title: string, text: string}>;
   picture: boolean|string = false;
   imageDescription: string = '';
   isSpeak: boolean = false;
 
   constructor(
+    private nativeStorage: NativeStorage,
     private cameraProvider: CameraProvider,
     private nativeActionsProvider: NativeActionsProvider,
     private cognitiveService: CognitiveService,
@@ -29,6 +33,9 @@ export class ImageDetailPage {
   }
 
   ionViewCanEnter() {
+    this.nativeStorage.getItem('voiceLanguage').then(data => this.voiceLanguage = data);
+    this.nativeStorage.getItem('translateTo').then(data => this.translateTo = data);
+
     this.translateTexts = [
       { title: 'LOADING', text: '' },
       { title: 'ANALYZING_IMAGE', text: '' }
@@ -63,7 +70,7 @@ export class ImageDetailPage {
           this.picture = picture;
         }
 
-        this.nativeActionsProvider.playAudio(this.translateTexts[1].text);
+        this.nativeActionsProvider.playAudio(this.translateTexts[1].text, this.voiceLanguage);
       }, error => {
         console.error(error);
       });
@@ -74,10 +81,10 @@ export class ImageDetailPage {
         console.error(error);
       });
 
-      await this.cognitiveService.translateText(descriptionAnalyzedImage).subscribe(translated => {
+      await this.cognitiveService.translateText(descriptionAnalyzedImage, this.translateTo).subscribe(translated => {
         this.imageDescription = translated.text;
         this.nativeActionsProvider.vibrate();
-        this.nativeActionsProvider.playAudio(translated.text);
+        this.nativeActionsProvider.playAudio(translated.text, this.voiceLanguage);
         this.isSpeak = true;
       });
 
@@ -90,7 +97,7 @@ export class ImageDetailPage {
 
   async speakAgain(): Promise<any> {
     try {
-      await this.nativeActionsProvider.playAudio(this.imageDescription);
+      await this.nativeActionsProvider.playAudio(this.imageDescription, this.voiceLanguage);
     }
     catch(error) {
       console.error(error);

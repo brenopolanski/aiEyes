@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
@@ -7,11 +9,43 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  isMute: boolean = false;
+  appLanguage: string;
+  voiceLanguage: string;
+  translateTo: string;
+
+  constructor(
+    private translateService: TranslateService,
+    private nativeStorage: NativeStorage,
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+  ionViewCanEnter() {
+    this.nativeStorage.getItem('isMute').then(data => this.isMute = data);
+    this.nativeStorage.getItem('appLanguage').then(data => this.appLanguage = data);
+    this.nativeStorage.getItem('voiceLanguage').then(data => this.voiceLanguage = data);
+    this.nativeStorage.getItem('translateTo').then(data => this.translateTo = data);
+  }
+
+  updateItem(key, value) {
+    this.nativeStorage.setItem(key, value)
+      .then(
+        () => console.log('Stored item!'),
+        error => console.error('Error storing item!', error)
+      );
+  }
+
+  updateAppLanguage(value) {
+    this.translateService.use(value);
+
+    this.nativeStorage.setItem('appLanguage', value)
+      .then(
+        () => console.log('Stored item!'),
+        error => console.error('Error storing item!', error)
+      );
   }
 
 }

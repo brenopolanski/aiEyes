@@ -12,6 +12,7 @@ import { Vibration } from '@ionic-native/vibration';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { Globalization } from '@ionic-native/globalization';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -60,6 +61,7 @@ import { createTranslateLoader } from './../assets/i18n/createTranslateLoader';
     TextToSpeech,
     ScreenOrientation,
     Globalization,
+    NativeStorage,
     CognitiveService,
     CameraProvider,
     NativeActionsProvider
