@@ -3,7 +3,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { CameraProvider } from './../../providers/camera/camera.provider';
-import { NativeActionsProvider } from './../../providers/native-actions/native-actions';
+import { NativeActionsProvider } from './../../providers/native-actions/native-actions.provider';
 import { CognitiveService } from './../../providers/cognitive-services/cognitive-services.service';
 
 @IonicPage()

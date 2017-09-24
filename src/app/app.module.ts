@@ -20,7 +20,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { CameraProvider } from '../providers/camera/camera.provider';
 import { CognitiveService } from '../providers/cognitive-services/cognitive-services.service';
-import { NativeActionsProvider } from '../providers/native-actions/native-actions';
+import { NativeActionsProvider } from '../providers/native-actions/native-actions.provider';
 import { createTranslateLoader } from './../assets/i18n/createTranslateLoader';
 
 @NgModule({

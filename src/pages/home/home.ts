@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { NavController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
-import { NativeActionsProvider } from './../../providers/native-actions/native-actions';
+import { NativeActionsProvider } from './../../providers/native-actions/native-actions.provider';
 
 @Component({
   selector: 'page-home',
