@@ -32,7 +32,7 @@ export class HomePage {
 
 
     this.translateTexts = [
-      { title: 'TOUCH_SCREEN_TAKE_PHOTO', text: '' }
+      { title: 'TOUCH_SCREEN_TAKE_PICTURE', text: '' }
     ];
 
     this.translateTexts.forEach(el => {
