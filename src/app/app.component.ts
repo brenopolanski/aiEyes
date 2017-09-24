@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,6 +19,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
+  language: string = 'en-US';
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -26,6 +28,7 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public screenOrientation: ScreenOrientation,
     public globalization: Globalization,
+    public nativeStorage: NativeStorage,
     public translateService: TranslateService
   ) {
     this.initializeApp();
@@ -37,15 +40,17 @@ export class MyApp {
     ];
   }
 
-  initializeApp() {
+  async initializeApp(): Promise<any> {
     // this language will be used as a fallback when a
     // translation isn't found in the current language
-    this.translateService.setDefaultLang('en');
+    this.translateService.setDefaultLang('en-US');
+
+    await this.nativeStorage.getItem('language').then(data => this.language = data);
 
     // the lang to use, if the lang isn't available,
     // it will use the current loader to get them
-    this.globalization.getPreferredLanguage()
-      .then(res => this.translateService.use(res.value))
+    await this.globalization.getPreferredLanguage()
+      .then(res => this.translateService.use(this.language || res.value))
       .catch(error => console.log(error));
 
     this.platform.ready().then(() => {

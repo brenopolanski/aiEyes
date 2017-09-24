@@ -13,6 +13,7 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 })
 export class ImageDetailPage {
 
+  isMute: boolean = false;
   language: string = 'en-US';
   translateTo: string = 'en';
   translateTexts: Array<{title: string, text: string}>;
@@ -30,9 +31,11 @@ export class ImageDetailPage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController
   ) {
+
   }
 
   ionViewCanEnter() {
+    this.nativeStorage.getItem('isMute').then(data => this.isMute = data);
     this.nativeStorage.getItem('language').then(data => this.language = data);
     this.nativeStorage.getItem('translateTo').then(data => this.translateTo = data);
 
@@ -70,7 +73,9 @@ export class ImageDetailPage {
           this.picture = picture;
         }
 
-        this.nativeActionsProvider.playAudio(this.translateTexts[1].text, this.language);
+        if (!this.isMute) {
+          this.nativeActionsProvider.playAudio(this.translateTexts[1].text, this.language);
+        }
       }, error => {
         console.error(error);
       });
@@ -84,7 +89,11 @@ export class ImageDetailPage {
       await this.cognitiveService.translateText(descriptionAnalyzedImage, this.translateTo).subscribe(translated => {
         this.imageDescription = translated.text;
         this.nativeActionsProvider.vibrate();
-        this.nativeActionsProvider.playAudio(translated.text, this.language);
+
+        if (!this.isMute) {
+          this.nativeActionsProvider.playAudio(translated.text, this.language);
+        }
+
         this.isSpeak = true;
       });
 
@@ -97,7 +106,9 @@ export class ImageDetailPage {
 
   async speakAgain(): Promise<any> {
     try {
-      await this.nativeActionsProvider.playAudio(this.imageDescription, this.language);
+      if (!this.isMute) {
+        await this.nativeActionsProvider.playAudio(this.imageDescription, this.language);
+      }
     }
     catch(error) {
       console.error(error);

@@ -10,6 +10,7 @@ import { NativeActionsProvider } from './../../providers/native-actions/native-a
 })
 export class HomePage {
 
+  isMute: boolean = false;
   language: string = 'en-US';
   translateTexts: Array<{title: string, text: string}>;
 
@@ -23,6 +24,7 @@ export class HomePage {
   }
 
   async ionViewCanEnter(): Promise<any> {
+    this.nativeStorage.getItem('isMute').then(data => this.isMute = data);
     this.nativeStorage.getItem('language').then(data => this.language = data);
 
     const delay = time => new Promise(res => setTimeout(() => res(), time));
@@ -41,7 +43,9 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.nativeActionsProvider.playAudio(this.translateTexts[0].text, this.language);
+    if (!this.isMute) {
+      this.nativeActionsProvider.playAudio(this.translateTexts[0].text, this.language);
+    }
   }
 
   takePicture() {
