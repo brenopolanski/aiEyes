@@ -13,7 +13,7 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 })
 export class ImageDetailPage {
 
-  voiceLanguage: string = 'en-US';
+  language: string = 'en-US';
   translateTo: string = 'en';
   translateTexts: Array<{title: string, text: string}>;
   picture: boolean|string = false;
@@ -33,7 +33,7 @@ export class ImageDetailPage {
   }
 
   ionViewCanEnter() {
-    this.nativeStorage.getItem('voiceLanguage').then(data => this.voiceLanguage = data);
+    this.nativeStorage.getItem('language').then(data => this.language = data);
     this.nativeStorage.getItem('translateTo').then(data => this.translateTo = data);
 
     this.translateTexts = [
@@ -70,7 +70,7 @@ export class ImageDetailPage {
           this.picture = picture;
         }
 
-        this.nativeActionsProvider.playAudio(this.translateTexts[1].text, this.voiceLanguage);
+        this.nativeActionsProvider.playAudio(this.translateTexts[1].text, this.language);
       }, error => {
         console.error(error);
       });
@@ -84,7 +84,7 @@ export class ImageDetailPage {
       await this.cognitiveService.translateText(descriptionAnalyzedImage, this.translateTo).subscribe(translated => {
         this.imageDescription = translated.text;
         this.nativeActionsProvider.vibrate();
-        this.nativeActionsProvider.playAudio(translated.text, this.voiceLanguage);
+        this.nativeActionsProvider.playAudio(translated.text, this.language);
         this.isSpeak = true;
       });
 
@@ -97,7 +97,7 @@ export class ImageDetailPage {
 
   async speakAgain(): Promise<any> {
     try {
-      await this.nativeActionsProvider.playAudio(this.imageDescription, this.voiceLanguage);
+      await this.nativeActionsProvider.playAudio(this.imageDescription, this.language);
     }
     catch(error) {
       console.error(error);

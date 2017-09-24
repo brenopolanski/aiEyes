@@ -10,8 +10,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class SettingsPage {
 
   isMute: boolean = false;
-  appLanguage: string;
-  voiceLanguage: string;
+  language: string;
   translateTo: string;
 
   constructor(
@@ -25,8 +24,7 @@ export class SettingsPage {
 
   ionViewCanEnter() {
     this.nativeStorage.getItem('isMute').then(data => this.isMute = data);
-    this.nativeStorage.getItem('appLanguage').then(data => this.appLanguage = data);
-    this.nativeStorage.getItem('voiceLanguage').then(data => this.voiceLanguage = data);
+    this.nativeStorage.getItem('language').then(data => this.language = data);
     this.nativeStorage.getItem('translateTo').then(data => this.translateTo = data);
   }
 
@@ -38,10 +36,10 @@ export class SettingsPage {
       );
   }
 
-  updateAppLanguage(value) {
+  updateLanguage(value) {
     this.translateService.use(value);
 
-    this.nativeStorage.setItem('appLanguage', value)
+    this.nativeStorage.setItem('language', value)
       .then(
         () => console.log('Stored item!'),
         error => console.error('Error storing item!', error)

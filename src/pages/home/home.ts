@@ -10,7 +10,7 @@ import { NativeActionsProvider } from './../../providers/native-actions/native-a
 })
 export class HomePage {
 
-  voiceLanguage: string = 'en-US';
+  language: string = 'en-US';
   translateTexts: Array<{title: string, text: string}>;
 
   constructor(
@@ -23,7 +23,7 @@ export class HomePage {
   }
 
   async ionViewCanEnter(): Promise<any> {
-    this.nativeStorage.getItem('voiceLanguage').then(data => this.voiceLanguage = data);
+    this.nativeStorage.getItem('language').then(data => this.language = data);
 
     const delay = time => new Promise(res => setTimeout(() => res(), time));
     await delay(1000);
@@ -41,7 +41,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.nativeActionsProvider.playAudio(this.translateTexts[0].text, this.voiceLanguage);
+    this.nativeActionsProvider.playAudio(this.translateTexts[0].text, this.language);
   }
 
   takePicture() {

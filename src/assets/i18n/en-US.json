@@ -7,5 +7,13 @@
   "IMAGE_DETAIL": "Image Detail",
   "TOUCH_SCREEN_TAKE_PHOTO": "Touch the screen and take a photo",
   "ANALYZING_IMAGE": "Analyzing the image",
-  "SPEAK_AGAIN": "Speak Again"
+  "SPEAK_AGAIN": "Speak Again",
+  "MOBILE SETTINGS": "Mobile Settings",
+  "MUTE": "Mute",
+  "LANGUAGE": "Language",
+  "ENGLISH": "English",
+  "PORTUGUESE": "Portuguese",
+  "TRANSLATE": "Translate",
+  "FROM": "From",
+  "TO": "To"
 }
