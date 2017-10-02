@@ -1,4 +1,4 @@
-# <img src="./resources/icon.png" width="50" align="left"> aiEyes
+# <img src="./resources/icon.png" width="100" align="left"> aiEyes
 
 > Tips and Tricks for Udacity Reviewer - Extension for modern browsers
 
