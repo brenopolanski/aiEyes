@@ -4,6 +4,10 @@
 
 *aiEyes* is an open source app that helps the Blind and Visually-Impaired Users to **see** the world with the help of [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). Developed with [Ionic framework](https://ionicframework.com/), [Azure Cognitive APIs](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/) and [Google Translate API](https://github.com/matheuss/google-translate-api) it is able to describe pictures to the user.
 
+Inspired by *[@adrielcafe](https://github.com/adrielcafe)* [BeMyEyesXamarinApp](https://github.com/adrielcafe/BeMyEyesXamarinApp).
+
+Invite me to a coffee [![donate-paypal](https://raw.githubusercontent.com/brenopolanski/phaser-es6-starter/gh-assets/btn_donate_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNXA4YYGQCJZG)
+
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
 ## How to use this template
@@ -29,3 +33,23 @@ $ ionic cordova run ios
 ```
 
 Substitute ios for android if not on a Mac.
+
+## Contributing
+
+If you want to help, please read the [Contributing](https://github.com/brenopolanski/aiEyes/blob/master/CONTRIBUTING.md) guide.
+
+## History
+
+For detailed changelog, see [Releases](https://github.com/brenopolanski/aiEyes/releases).
+
+## Credits
+
+## Donations
+
+Donations would be more than welcome :)
+
+[![donate-paypal](https://raw.githubusercontent.com/brenopolanski/phaser-es6-starter/gh-assets/btn_donate_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNXA4YYGQCJZG)
+
+## License
+
+[MIT License](http://brenopolanski.mit-license.org/) © Breno Polanski
