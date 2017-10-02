@@ -1,3 +1,7 @@
+# <img src="./resources/icon.png" width="50" align="left"> aiEyes
+
+> Tips and Tricks for Udacity Reviewer - Extension for modern browsers
+
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
 ## How to use this template
@@ -23,4 +27,3 @@ $ ionic cordova run ios
 ```
 
 Substitute ios for android if not on a Mac.
-
