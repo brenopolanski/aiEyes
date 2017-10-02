@@ -1,6 +1,6 @@
-# <img src="./resources/icon.png" width="100" align="left"> aiEyes
+# <img src="./resources/icon.png" align="left"> aiEyes
 
-> Tips and Tricks for Udacity Reviewer - Extension for modern browsers
+> Describes photos using audio for visually impaired users.
 
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
