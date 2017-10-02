@@ -1,6 +1,8 @@
 # <img src="./resources/icon.png" width="100" align="left"> aiEyes
 
-> Describes photos using audio for visually impaired users.
+> Describes photos using audio for Blind and Visually-Impaired Users.
+
+*aiEyes* is an open source app that helps the Blind and Visually-Impaired Users to **see** the world with the help of [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). Developed with [Ionic framework](https://ionicframework.com/), [Azure Cognitive APIs](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/) and [Google Translate API](https://github.com/matheuss/google-translate-api) it is able to describe pictures to the user.
 
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
