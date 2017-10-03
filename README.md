@@ -52,6 +52,23 @@ $ ionic cordova platform add ios
 $ ionic cordova run ios
 ```
 
+## Technologies
+
+| **Tech** | **Description** |
+|----------|-----------------|
+| [Ionic framework](https://ionicframework.com/) | Ionic is the beautiful, free and open source mobile SDK for developing native and progressive web apps with ease. |
+| [Azure Computer Vision API](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/) | Extract rich information from images to categorize and process visual data – and machine-assisted moderation of images to help curate your services. |
+| [Google Translate API](https://github.com/matheuss/google-translate-api) | A free and unlimited API for Google Translate :dollar::no_entry_sign: |
+| [Server google-translate-api](https://github.com/brenopolanski/server-google-translate-api) | A simple server using a free and unlimited API for Google Translate. |
+| [Ionic Native Camera](http://ionicframework.com/docs/native/camera/) | This plugin defines a global `navigator.camera` object, which provides an API for taking pictures and for choosing images from the system's image library. |
+| [Ionic Native File and File Transfer](http://ionicframework.com/docs/native/file-transfer/) | This plugin allows you to upload and download files. |
+| [Ionic Native Text To Speech](http://ionicframework.com/docs/native/text-to-speech/) | Text to Speech plugin. |
+| [Ionic Native Vibration](http://ionicframework.com/docs/native/vibration/) | Vibrates the device. |
+| [Ionic Native Screen Orientation](http://ionicframework.com/docs/native/screen-orientation/) | Cordova plugin to set/lock the screen orientation in a common way. |
+| [Ionic Native Globalization](http://ionicframework.com/docs/native/globalization/) | This plugin obtains information and performs operations specific to the user's locale, language, and timezone. |
+| [Ionic Native Storage](http://ionicframework.com/docs/native/native-storage/) | Native storage of variables in Android and iOS. |
+| [NGX-Translate](https://github.com/ngx-translate) | NGX-Translate is an internationalization library for Angular 2+. It lets you define translations for your content in different languages and switch between them easily. |
+
 ## Contributing
 
 If you want to help, please read the [Contributing](https://github.com/brenopolanski/aiEyes/blob/master/CONTRIBUTING.md) guide.
