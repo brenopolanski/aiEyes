@@ -79,6 +79,9 @@ For detailed changelog, see [Releases](https://github.com/brenopolanski/aiEyes/r
 
 ## Credits
 
+- [Iconfinder](https://www.iconfinder.com/icons/2525027/hulk_male_no_eyes_super_hero_icon#size=256)
+- [BeMyEyesXamarinApp](https://github.com/adrielcafe/BeMyEyesXamarinApp)
+
 ## Donations
 
 Donations would be more than welcome :)
