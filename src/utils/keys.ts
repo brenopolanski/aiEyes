@@ -1,3 +1,3 @@
 export default {
-  VISION_API_KEY: 'aeaaa0e3a68748209eda59d6d5dfeb8c'
+  VISION_API_KEY: 'db7f9274267b4b3f88ea4c70eeda98f8'
 };

@@ -1,6 +1,7 @@
 {
     "name": "aiEyes",
-    "version": "0.0.1",
+    "description": "Describes photos using audio for Blind and Visually-Impaired Users",
+    "version": "0.2.0",
     "author": {
         "name": "Breno Polanski",
         "email": "breno.polanski@gmail.com",
@@ -66,7 +67,6 @@
         "@ionic/app-scripts": "2.1.4",
         "typescript": "2.3.4"
     },
-    "description": "Describes photos using audio for visually impaired users",
     "cordova": {
         "plugins": {
             "cordova-plugin-camera": {},

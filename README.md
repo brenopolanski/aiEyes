@@ -2,9 +2,11 @@
 
 > Describes photos using audio for Blind and Visually-Impaired Users.
 
-*aiEyes* is an open source app that helps the Blind and Visually-Impaired Users to **see** the world with the help of [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). Developed with [Ionic framework](https://ionicframework.com/), [Azure Cognitive APIs](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/) and [Google Translate API](https://github.com/matheuss/google-translate-api) it is able to describe pictures to the user.
+*aiEyes* is an open source app that helps the Blind and Visually-Impaired Users to **see** the world with the help of [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). Developed with [Ionic framework](https://ionicframework.com/), [Azure Computer Vision API](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/) and [Google Translate API](https://github.com/matheuss/google-translate-api) it is able to describe pictures to the user.
 
 Inspired by *[@adrielcafe](https://github.com/adrielcafe)* [BeMyEyesXamarinApp](https://github.com/adrielcafe/BeMyEyesXamarinApp).
+
+![](./screenshots/app_flow.png)
 
 Invite me to a coffee [![donate-paypal](https://raw.githubusercontent.com/brenopolanski/phaser-es6-starter/gh-assets/btn_donate_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNXA4YYGQCJZG)
 
