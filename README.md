@@ -8,12 +8,13 @@ Inspired by *@adrielcafe* [BeMyEyesXamarinApp](https://github.com/adrielcafe/BeM
 
 ![](./screenshots/app_flow.png)
 
-### Demo Video
-[![demo](https://img.youtube.com/vi/k8kd785kfMY/3.jpg)](https://youtu.be/k8kd785kfMY)
-
 ### :heart: Found this project useful?
 
 If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
+
+## Demo Video
+
+[![demo](https://img.youtube.com/vi/k8kd785kfMY/0.jpg)](https://youtu.be/k8kd785kfMY)
 
 ## Getting Started
 
