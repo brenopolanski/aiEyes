@@ -10,6 +10,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class SettingsPage {
 
   isMute: boolean = false;
+  isVibrate: boolean = true;
   language: string;
   translateTo: string;
 
@@ -24,6 +25,7 @@ export class SettingsPage {
 
   ionViewCanEnter() {
     this.nativeStorage.getItem('isMute').then(data => this.isMute = data);
+    this.nativeStorage.getItem('isVibrate').then(data => this.isVibrate = data);
     this.nativeStorage.getItem('language').then(data => this.language = data);
     this.nativeStorage.getItem('translateTo').then(data => this.translateTo = data);
   }

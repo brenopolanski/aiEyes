@@ -19,6 +19,11 @@
 		</ion-item>
 
 		<ion-item>
+			<ion-label>{{ 'VIBRATE' | translate }}</ion-label>
+			<ion-toggle [(ngModel)]="isVibrate" (ngModelChange)="updateItem('isVibrate', isVibrate)"></ion-toggle>
+		</ion-item>
+
+		<ion-item>
 			<ion-label>{{ 'LANGUAGE' | translate }}</ion-label>
 			<ion-select [(ngModel)]="language" (ngModelChange)="updateLanguage(language)" submitText="Accept" cancelText="Cancel">
 				<ion-option value="en-US">{{ 'ENGLISH' | translate }}</ion-option>

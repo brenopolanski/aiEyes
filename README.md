@@ -8,7 +8,12 @@ Inspired by *@adrielcafe* [BeMyEyesXamarinApp](https://github.com/adrielcafe/BeM
 
 ![](./screenshots/app_flow.png)
 
-Invite me to a coffee [![donate-paypal](https://raw.githubusercontent.com/brenopolanski/phaser-es6-starter/gh-assets/btn_donate_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNXA4YYGQCJZG)
+### Demo Video
+[![demo](https://img.youtube.com/vi/k8kd785kfMY/3.jpg)](https://youtu.be/k8kd785kfMY)
+
+### :heart: Found this project useful?
+
+If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
 
 ## Getting Started
 
@@ -20,7 +25,7 @@ Modify the file `src/utils/keys.ts` with the value of your API Key.
 
 #### Installation
 
-First of all, install the dependencies to run this app.
+First of all, install the dependencies to run this app:
 
 ```
 $ npm install -g cordova ionic

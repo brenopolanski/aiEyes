@@ -14,6 +14,7 @@ import { CognitiveService } from './../../providers/cognitive-services/cognitive
 export class ImageDetailPage {
 
   isMute: boolean = false;
+  isVibrate: boolean = true;
   language: string = 'en-US';
   translateTo: string = 'en';
   translateTexts: Array<{title: string, text: string}>;
@@ -36,6 +37,7 @@ export class ImageDetailPage {
 
   ionViewCanEnter() {
     this.nativeStorage.getItem('isMute').then(data => this.isMute = data);
+    this.nativeStorage.getItem('isVibrate').then(data => this.isVibrate = data);
     this.nativeStorage.getItem('language').then(data => this.language = data);
     this.nativeStorage.getItem('translateTo').then(data => this.translateTo = data);
 
@@ -88,7 +90,10 @@ export class ImageDetailPage {
 
       await this.cognitiveService.translateText(descriptionAnalyzedImage, this.translateTo).subscribe(translated => {
         this.imageDescription = translated.text;
-        this.nativeActionsProvider.vibrate();
+
+        if (this.isVibrate) {
+          this.nativeActionsProvider.vibrate();
+        }
 
         if (!this.isMute) {
           this.nativeActionsProvider.playAudio(translated.text, this.language);
