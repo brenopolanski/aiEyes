@@ -4,37 +4,47 @@
 
 *aiEyes* is an open source app that helps the Blind and Visually-Impaired Users to **see** the world with the help of [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). Developed with [Ionic framework](https://ionicframework.com/), [Azure Computer Vision API](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/) and [Google Translate API](https://github.com/matheuss/google-translate-api) it is able to describe pictures to the user.
 
-Inspired by *[@adrielcafe](https://github.com/adrielcafe)* [BeMyEyesXamarinApp](https://github.com/adrielcafe/BeMyEyesXamarinApp).
+Inspired by *@adrielcafe* [BeMyEyesXamarinApp](https://github.com/adrielcafe/BeMyEyesXamarinApp).
 
 ![](./screenshots/app_flow.png)
 
 Invite me to a coffee [![donate-paypal](https://raw.githubusercontent.com/brenopolanski/phaser-es6-starter/gh-assets/btn_donate_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNXA4YYGQCJZG)
 
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+## Getting Started
 
-## How to use this template
+#### Get API Key
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+Create your Computer Vision API API Key here: https://azure.microsoft.com/en-us/try/cognitive-services/
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+Modify the file `src/utils/keys.ts` with the value of your API Key.
 
-### With the Ionic CLI:
+#### Installation
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+First of all, install the dependencies to run this app.
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+```
+$ npm install -g cordova ionic
 ```
 
-Then, to run it, cd into `myBlank` and run:
+Install dependencies:
 
-```bash
+```
+$ npm install
+```
+
+#### Run the app on your phone
+
+```
+$ ionic cordova platform add android
+$ ionic cordova run android
+```
+
+or
+
+```
 $ ionic cordova platform add ios
 $ ionic cordova run ios
 ```
-
-Substitute ios for android if not on a Mac.
 
 ## Contributing
 
