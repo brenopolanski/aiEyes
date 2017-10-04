@@ -13,6 +13,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { Globalization } from '@ionic-native/globalization';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { AppVersion } from '@ionic-native/app-version';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -62,6 +63,7 @@ import { createTranslateLoader } from './../assets/i18n/createTranslateLoader';
     ScreenOrientation,
     Globalization,
     NativeStorage,
+    AppVersion,
     CognitiveService,
     CameraProvider,
     NativeActionsProvider
