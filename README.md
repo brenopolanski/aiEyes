@@ -20,7 +20,7 @@ If you found this project useful, then please consider giving it a :star: on Git
 
 #### Get API Key
 
-Create your Computer Vision API API Key here: https://azure.microsoft.com/en-us/try/cognitive-services/
+Create your Computer Vision API Key here: https://azure.microsoft.com/en-us/try/cognitive-services/
 
 Modify the file `src/utils/keys.ts` with the value of your API Key.
 
