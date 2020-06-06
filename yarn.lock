@@ -44,6 +44,10 @@
   dependencies:
     tsickle "^0.21.0"
 
+"@ionic-native/app-version@^4.3.0":
+  version "4.20.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/app-version/-/app-version-4.20.0.tgz#e8b8e0136b06f131f283f301a15becc6ed651188"
+
 "@ionic-native/camera@^4.2.1":
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.3.0.tgz#900e5f0b79f4f03187d745463a439a6e015f59f9"
@@ -1088,6 +1092,10 @@ cordova-common@^2.1.0:
     shelljs "^0.5.3"
     underscore "^1.8.3"
     unorm "^1.3.3"
+
+cordova-plugin-app-version@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-app-version/-/cordova-plugin-app-version-0.1.9.tgz#9db0607863337a710489302e5f50a904f1449bdb"
 
 cordova-plugin-camera@^2.4.1:
   version "2.4.1"
@@ -4097,8 +4105,8 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.2.tgz#0e18781de629a18308ce1481650f67ffa2693a5d"
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
 
 which-module@^1.0.0:
   version "1.0.0"
